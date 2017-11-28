@@ -5,6 +5,14 @@ interface Point {
   y: number;
 }
 
+export interface QRLocation {
+  topRight: Point;
+  bottomLeft: Point;
+  topLeft: Point;
+  alignmentPattern: Point;
+  dimension: number;
+}
+
 const distance = (a: Point, b: Point) => Math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2);
 
 function sum(values: number[]) {
@@ -215,7 +223,7 @@ interface Quad {
   };
 }
 
-export function locate(matrix: BitMatrix) {
+export function locate(matrix: BitMatrix): QRLocation {
   const finderPatternQuads: Quad[] = [];
   const alignmentPatternQuads: Quad[] = [];
 
